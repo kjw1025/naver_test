@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <script
+      type="text/javascript"
+      src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.11.3.min.js"
+    ></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var naver_id_login = new naver_id_login(
+        "lskkv2QYF29O5KCw5mTL",
+        "http://localhost:5500/naver_callback.html"
+      );
+      // 접근 토큰 값 출력
+      alert(naver_id_login.oauthParams.access_token);
+      // 네이버 사용자 프로필 조회
+      naver_id_login.get_naver_userprofile("naverSignInCallback()");
+      // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+      function naverSignInCallback() {
+        alert(naver_id_login.getProfileData("email"));
+        alert(naver_id_login.getProfileData("nickname"));
+      }
+
+      // 삭제요청
+      // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=jyvqXeaVOVmV&client_secret=527300A0_COq1_XV33cf&access_token=c8ceMEJisO4Se7uGCEYKK1p52L93bHXLnaoETis9YzjfnorlQwEisqemfpKHUq2gY&service_provider=NAVER
+
+      // ex)
+      // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=lskkv2QYF29O5KCw5mTL&client_secret=W8GUzVsKBS&access_token=AAAAOIZCNXwJcOd4fVNFi1-a6B0DP80pxfVNce6PbZHr6_QVhHSJ-TxZsf6Z7VTpDw-8eqRVKEmMUHnrS8TmhZcSyyE&service_provider=NAVER
+      // id : lskkv2QYF29O5KCw5mTL
+      // pw : W8GUzVsKBS
+      // 토큰 : AAAAOIZCNXwJcOd4fVNFi1-a6B0DP80pxfVNce6PbZHr6_QVhHSJ-TxZsf6Z7VTpDw-8eqRVKEmMUHnrS8TmhZcSyyE
+    </script>
+  </body>
+</html>
